@@ -12,10 +12,11 @@ async function createResource (resource) {
 }
 
 async function getResourceById (id) {
-    return await db('resources').where('resource_id', id);
+    return await db('resources').where('resource_id', id).first();
 }
 
 module.exports = {
     getAllResources,
     createResource,
+    getResourceById,
 }

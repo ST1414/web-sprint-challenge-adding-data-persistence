@@ -2,21 +2,23 @@
 const db = require('../../data/dbConfig');
 
 async function getAllTasks () {
-    // - [ ] `[GET] /api/tasks`
-    //   - Even though `task_completed` is stored as an integer, the API uses booleans when interacting with the client
-    //   - Each task must include `project_name` and `project_description`
-    //   - Example of response body: `[{"task_id":1,"task_description":"baz","task_notes":null,"task_completed":false,"project_name:"bar","project_description":null}]`
-    const rows = await db('tasks');
+    const rows = await db('tasks as t')
+        .join('projects as p', 'p.project_id', 't.project_id')
+        .select(
+            't.task_id',
+            't.task_description',
+            't.task_notes',
+            't.task_completed',
+            'p.project_name',
+            'p.project_description'
+        );
+    console.log('ROWS: ', rows);
+
     const result = rows.map( task => {
-        if (task.task_completed === 0){
-            task.task_completed = false;
-        } else {
-            task.task_completed = true;
-        }
+        task.task_completed === 0 ? task.task_completed = false : task.task_completed = true;
         return task;
     });
     return result;
-
 }
 
 async function createTask (task) {
@@ -34,4 +36,5 @@ async function getTaskById (id) {
 module.exports = {
     getAllTasks,
     createTask,
+    getTaskById,
 }
