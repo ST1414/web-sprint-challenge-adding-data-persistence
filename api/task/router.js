@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const Task = require('./model');
+const { checkProjectId } = require('./middle')
 
 router.get('/', (req, res, next) => {
     Task.getAllTasks()
@@ -11,7 +12,7 @@ router.get('/', (req, res, next) => {
         .catch( next )
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', checkProjectId, (req, res, next) => {
     Task.createTask(req.body)
         .then( response => {
             res.json(response);
