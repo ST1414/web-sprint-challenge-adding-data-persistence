@@ -1,11 +1,22 @@
 // ***** RESOURCES ROUTER *****
-// build your `/api/resources` router here
 const express = require('express');
 const router = express.Router();
+const Resource = require('./model');
 
+router.get('/', (req, res, next) => {
+    Resource.getAllResources()
+        .then( response => {
+            res.json(response)
+        })
+        .catch( next )
+})
 
-router.get('/', (req, res) => {
-    res.send('<h1>Resources Router</h1>')
+router.post('/', (req, res, next) => {
+    Resource.createResource(req.body)
+        .then( response => {
+            res.json(response);
+        })
+        .catch( next );
 })
 
 router.get('*', (req, res) => {
@@ -13,9 +24,3 @@ router.get('*', (req, res) => {
 })
 
 module.exports = router;
-
-// - [ ] `[GET] /api/resources`
-//   - Example of response body: `[{"resource_id":1,"resource_name":"foo","resource_description":null}]`
-
-// - [ ] `[POST] /api/resources`
-//   - Example of response body: `{"resource_id":1,"resource_name":"foo","resource_description":null}`

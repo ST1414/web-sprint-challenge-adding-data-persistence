@@ -1,5 +1,4 @@
 // ***** PROJECTS ROUTER *****
-// build your `/api/projects` router here
 const express = require('express');
 const router = express.Router();
 const Project = require('./model');
@@ -19,8 +18,6 @@ router.post('/', (req, res, next) => {
         })
         .catch( next );
 })
-
-
 
 router.get('*', (req, res) => {
     res.send('<h1>Projects Router - OOPS!</h1>')
