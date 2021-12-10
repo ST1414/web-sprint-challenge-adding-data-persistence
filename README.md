@@ -10,7 +10,7 @@ You are not allowed to collaborate during the sprint challenge.
 
 ## Project Set Up
 
-- [ ] Run `npm install` to install your dependencies.
+<!-- - [ ] Run `npm install` to install your dependencies. -->
 - [ ] Run tests locally executing `npm test`.
 
 ## Project Instructions
@@ -21,7 +21,7 @@ In this project you will be given a set of requirements and must design a databa
 
 ### Files to Complete
 
-1. `package.json`
+<!-- 1. `package.json` -->
 2. `index.js`
 3. `api/server.js`
 4. `model.js` inside `api/project`, `api/resource` and `api/task`
@@ -35,7 +35,7 @@ The project needs some additional NPM dependencies in order to work.
 
 ### Required Scripts
 
-Add `"start"`. `"server"`, `"migrate"` and `"rollback"` scripts to the `package.json` file.
+<!-- Add `"start"`. `"server"`, `"migrate"` and `"rollback"` scripts to the `package.json` file. -->
 
 ### Required Tables
 
