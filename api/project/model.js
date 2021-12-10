@@ -18,9 +18,7 @@ async function createProject (project) {
 
 async function getProjectById (id) {
     const project = await db('projects').where('project_id', id).first();
-
-    if (project === undefined ) { return null}
-
+    if (project === undefined ) { return null }
     project.project_completed === 0 ? project.project_completed = false : project.project_completed = true;
    
     return project;
